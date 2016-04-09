@@ -1,0 +1,18 @@
+1 . # 变量的赋值
+2 . stock=('002582',28.10,28.80,28.90,28.00)
+3 . code,open_price,close_price,high_price,low_price=stock
+4 . print(code)
+5 . 
+6 . # namedtuple
+7 . # 可以自定义
+8 . from collections import namedtuple
+9 . Stock=namedtuple('Stock','code price')
+10. s=Stock('002852',28.5)
+11. print(s)
+12. 
+13. 
+14.  
+15.  
+16.  
+17.  
+18.  
