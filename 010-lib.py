@@ -35,38 +35,31 @@ if(1==2):
 # send email
 # pass: 'anscbxwbmsotxxzh'//网易的授权码
 import smtplib
-server = smtplib.SMTP('smtp.126.com')
-server.sendmail('wancy86@126.com', 'wancy86@126.com',
-"""To: wancy86@126.org
-From: wancy86@126.org
-
-Beware the Ides of March.
-""")
-print('email sent..')
-server.quit()
-
 smtpObj = smtplib.SMTP()
-sender = "wancy86@126.com"
-pwd126='wancy86' #网易的授权码
-receivers = ["451151239@qq.com"]
-message = """From: Mark
-    To: zoro <451151239@qq.com>
-    Subject: test email from python
+sender = "trad212remind@sina.com"
+au_pwd='123456'
+receivers = ["wancy86@126.com","461151239@qq.com"]
+message = """"From: Mark <trad212remind@sina.com>
+    To: wancy86 <wancy86@126.com>
+    Subject: test email for python
     
     this is a test email.
-
-    Thank you,
-    Mark
     """
-try:
-    smtpObj = smtplib.SMTP()
-    smtpObj.connect("smtp.126.com", "25") 
-    # 千万请注意下面的password是授权密码，不是邮箱的密码。
-    # 授权密码需要在163邮箱设置中设置。
-    state = smtpObj.login(sender, pwd126)
-    if state[0] == 235:
-        smtpObj.sendmail(sender, receivers, message)
-        print("send email success")
-    smtpObj.quit()
-except smtplib.SMTPException as e:
-    print(str(e))
+if(1==2):
+    try:
+        smtpObj = smtplib.SMTP()
+        smtpObj.connect("smtp.sina.com", "25") 
+        # 千万请注意下面的password是授权密码，不是邮箱的密码。
+        # 授权密码需要在163邮箱设置中设置。
+        state = smtpObj.login(sender, au_pwd)
+        if state[0] == 235:
+            smtpObj.sendmail(sender, receivers, message)
+            print("send email success")
+        smtpObj.quit()
+    except smtplib.SMTPException as e:
+        print(str(e))
+
+# 
+import datetime
+print(datetime.date(2003, 12, 2))
+
