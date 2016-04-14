@@ -115,3 +115,10 @@ mydate2=MyDate.from_string('14-04-2016')
 print(mydate2)
 
 
+# >from_string on: <class '__main__.ourDate'>
+# 11-9-2012
+# date2 is valied: True
+# 13-4-2016
+# mydate is valid: True
+# >from_string on: <class '__main__.MyDate'>
+# 14-4-2016
