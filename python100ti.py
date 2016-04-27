@@ -1,8 +1,99 @@
+
+
+def RandomList(count=10):
+    '''
+    生成随即数组
+    '''
+    import random
+    r = random.sample(range(count * 10), count)
+    # random.shuffle(r) #洗牌
+    # print(random.randint(1, 20))
+    # print(random.randrange(1, 20))
+    # print(random.sample(range(100), 10))
+    # print(r)
+    return r
+
+# RandomList(10)
+
+
+def BubbleSort(arr):
+    '''
+    冒泡排序
+    '''
+    print(arr)
+    for x in range(0, len(arr)):
+        for y in range(x + 1, len(arr)):
+            if arr[x] > arr[y]:
+                tmp = arr[x]
+                arr[x] = arr[y]
+                arr[y] = tmp
+    print(arr)
+    return arr
+
+# r = RandomList()
+# BubbleSort(r)
+
+
+def SelectionSort(arr):
+    '''
+    选择排序
+    '''
+    print(arr)
+    for x in range(0, len(arr)):
+        index = x
+        for y in range(x + 1, len(arr)):
+            if arr[x] > arr[y]:
+                index = y
+        if index != x:
+            tmp = arr[x]
+            arr[x] = arr[index]
+            arr[index] = tmp
+    print(arr)
+    return arr
+
+# r = RandomList()
+# SelectionSort(r)
+
+
+def QuickSort(arr):
+    '''
+    快速排序，二分排序
+    '''
+    print(arr)
+    for x in range(0, len(arr)):
+        index = x
+        for y in range(x + 1, len(arr)):
+            if arr[x] > arr[y]:
+                index = y
+        if index != x:
+            tmp = arr[x]
+            arr[x] = arr[index]
+            arr[index] = tmp
+    print(arr)
+    return arr
+
+# r = RandomList()
+# QuickSort(r)
+
+
+def HuiWen(num):
+    '''
+    5位数回文检查
+    12321
+    '''
+    if num // 10000 == num % 10 and num // 1000 % 10 == num % 100 // 10:
+        print('huiwen:', num)
+    else:
+        print(num // 10000, num % 10, num // 1000 % 10, num % 100 // 10)
+
+# HuiWen(12321)
+
+
 def NumInfo(num):
     '''
     数字的位数和逆序输出
     '''
-    l=[x for x in str(num)]
+    l = [x for x in str(num)]
     l.reverse()
     for t in l:
         print(t)
@@ -14,14 +105,15 @@ def factorial(num):
     '''
     递归计算阶乘
     '''
-    if num<=2:
+    if num <= 2:
         return num
     else:
-        return num*factorial(num-1)
+        return num * factorial(num - 1)
 
 # r=factorial(5)
 # print(r)
 # # 120
+
 
 def JieChengHe(num):
     import math
@@ -32,25 +124,27 @@ def JieChengHe(num):
 
     1+2!+3！=1 + 1*2 + 1*2*3
     '''
-    r=0
-    for x in range(1,num+1):
-        r+=math.factorial(x)
+    r = 0
+    for x in range(1, num + 1):
+        r += math.factorial(x)
 
     print(r)
     return r
 
 # JieChengHe(4)
 
+
 def PrintRhombus(level):
     '''
     打印菱形
     '''
-    for x in range(1,level*2+1,2):
-        print((''.rjust(x,'*')).center(level*2))
-    for x in range(level*2-1,0,-2):
-        print((''.rjust(x,'*')).center(level*2))
+    for x in range(1, level * 2 + 1, 2):
+        print((''.rjust(x, '*')).center(level * 2))
+    for x in range(level * 2 - 1, 0, -2):
+        print((''.rjust(x, '*')).center(level * 2))
 
 # PrintRhombus(6)
+
 
 def pingpong():
     '''
@@ -58,22 +152,22 @@ def pingpong():
     c not x and z
     TODO 怎么模拟
     '''
-    A=['a','b','c']
-    B=['x','y','z']
-
+    A = ['a', 'b', 'c']
+    B = ['x', 'y', 'z']
 
 
 def MonkeyandPeach():
     '''
     n个桃子，一天吃一半多一个，10天后只剩一个
     '''
-    r=1
-    for x in range(9,0,-1):
-        r=(r+1)*2
-        print(x,r)
+    r = 1
+    for x in range(9, 0, -1):
+        r = (r + 1) * 2
+        print(x, r)
     print(r)
 
 # MonkeyandPeach()
+
 
 def wanshu(self):
     '''
@@ -238,7 +332,7 @@ def CalculateMath():
 def MaxofThree(x, y, z):
     '''
     5 3个数中的最大值
-    print的占位输出
+    print 的占位输出
     '''
     v = max(x, max(y, z))
     print('the max one of %d, %d and %d is %d' % (x, y, z, v))
