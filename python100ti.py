@@ -1,5 +1,4 @@
 
-
 def RandomList(count=10):
     '''
     生成随即数组
