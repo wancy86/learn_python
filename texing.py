@@ -67,12 +67,3 @@ a = reduce(lambda x, y: x * y, [1, 2, 3])
 print(a)
 b = reduce(lambda x, y: x * y, [1, 2, 3], 10)
 print(b)
-
-
-class ProClass(object):
-    """docstring for ProClass"""
-    name = "class property"
-
-    def __init__(self, arg):
-        super(ProClass, self).__init__()
-        self.name = "instance property"
