@@ -1,4 +1,4 @@
-
+'''
 from attendence.models import Employee
 from attendence.models import EmployeeIP
 
@@ -38,3 +38,38 @@ print(type(ipList[0]))
 # <class 'tuple' >
 print(ipList[0])
 # 192.168.1.111
+
+
+
+'''
+
+# from types import FunctionType
+# import types
+
+
+# def test(self):
+#     pass
+
+# print(type(test))
+# print(type(test) == types.FunctionType)
+
+# s = ','
+# print('1,2,3,4'.split(s))
+# print(divmod(100, 21))
+# print(chr(123))
+
+# help(repr)
+# a = repr([1, 2, 3])
+# print(a)
+
+# help([0, 1, 2, 3])
+
+# a = iter([0, 1, 2, 3])
+# print(a)
+
+# help(open)
+# a = callable('')
+# print(a)
+
+# from lib2to2 import execfile
+repr(str)
