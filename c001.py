@@ -10,7 +10,7 @@ class Point(object):
 
     def calc_distence(self):
         import math
-        # 方根
+        # 鏂规牴
         result= math.sqrt(self.x**2+self.y**2)
         return result
 
