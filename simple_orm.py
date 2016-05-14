@@ -64,10 +64,17 @@ class Model(object, metaclass=ModelMetaClass):
         self.params = []
         self.args = []
 
+    def create(self, **kwargs):
+        for k, v in kwargs.items():
+            # if in mapping then get the value
+            pass
+
         for k, v in self.mapping.items():
             self.fields.append(k)
             self.params.append('?')
             self.args.append(getattr(self, k, ''))
+
+        return self
 
     def save(self):
         sql = 'insert into %s (%s) values(%s)' % (self.table, ','.join(self.fields), ','.join(self.params))
@@ -76,15 +83,12 @@ class Model(object, metaclass=ModelMetaClass):
         print('args:%s', param)
         # exec the sql
 
-    def create(self, **kws):
-        pass
-
 
 class NewsMetaClass(ModelMetaClass):
     """docstring for NewsMetaClass"""
     print('1. NewsMetaClass __new__')
 
-    def __new__(cls, name, bases, attrs, *arg):
+    def __new__(cls, name, bases, attrs):
         # do anything you want
         clsobj = super().__new__(cls, name, bases, attrs)
         return clsobj
