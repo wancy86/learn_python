@@ -16,3 +16,6 @@ for x in dir(emp):
 # compile(filename="D\:\\GitHub\\learn_python\\temp.py",source="D:\\GitHub\\learn_python\\temp.py",mode="exec")
 # execfile("D:\GitHub\learn_python\temp.py")
 # D:\GitHub\learn_python\temp.py
+
+
+dir(Employee)

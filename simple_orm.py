@@ -49,8 +49,13 @@ class ModelMetaClass(type):
         for k, v in mapping.items():
             del attrs[k]
 
-        attrs['mapping'] = mapping
+        # 挂到实例上
+        # attrs['mapping'] = mapping
         cls_obj = type.__new__(cls, name, bases, attrs)
+        # 挂到类对象上
+        cls_obj.mapping = mapping
+        cls_obj.table = name
+
         return cls_obj
 
 
@@ -60,27 +65,22 @@ class Model(object, metaclass=ModelMetaClass):
     def __init__(self, *arg):
         super(Model, self).__init__()
         self.arg = arg
-        self.fields = []
-        self.params = []
-        self.args = []
 
-    def create(self, **kwargs):
-        for k, v in kwargs.items():
-            # if in mapping then get the value
-            pass
+    @classmethod
+    def create(cls, **kwargs):
+        fields = []
+        params = []
+        args = []
 
-        for k, v in self.mapping.items():
-            self.fields.append(k)
-            self.params.append('?')
-            self.args.append(getattr(self, k, ''))
+        for k, v in cls.mapping.items():
+            fields.append(k)
+            params.append('?')
+            args.append(kwargs[k])
 
-        return self
-
-    def save(self):
-        sql = 'insert into %s (%s) values(%s)' % (self.table, ','.join(self.fields), ','.join(self.params))
-        param = ','.join(self.args)
-        print('SQL: %s', sql)
-        print('args:%s', param)
+        sql = 'insert into %s (%s) values(%s)' % (cls.table, ','.join(fields), ','.join(params))
+        param = ','.join(args)
+        print('SQL: %s' % (sql))
+        print('args: %s' % param)
         # exec the sql
 
 
@@ -90,6 +90,9 @@ class NewsMetaClass(ModelMetaClass):
 
     def __new__(cls, name, bases, attrs):
         # do anything you want
+
+        # attrs['create'] = NewsMetaClass.create
+
         clsobj = super().__new__(cls, name, bases, attrs)
         return clsobj
 
@@ -102,10 +105,5 @@ class News(Model, metaclass=NewsMetaClass):
     read_count = IntField(default=0)
 
 
-# news = News()
-# print(dir(news))
-# news.title
-# AttributeError: 'News' object has no attribute 'title'
-
-# print(news.__mapping__)
-print(News.mapping['title'])
+from datetime import datetime
+News.create(title='test', content='asdf', read_count='0', publish_date=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
