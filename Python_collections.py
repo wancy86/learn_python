@@ -1,0 +1,9 @@
+# Python_collections.py
+# list
+# tuple
+# namedtuple
+# deque
+# dict
+# defaultdict
+# OrderedDict
+# Counter

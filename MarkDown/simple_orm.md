@@ -1,14 +1,12 @@
 #Python - 动手写个ORM
 
-*. 任务：
-    1. 模拟简单的ORM - Object Relational Mapping
-    2. 为model添加create方法
+###任务：
+1. 模拟简单的ORM - Object Relational Mapping
+2. 为model添加create方法
 
-*参考：*
+代码很简单，直接上
 
-1. [使用元类](http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014319106919344c4ef8b1e04c48778bb45796e0335839000)
-
-
+###字段类型类
 ```python
 
 class Field(object):
@@ -68,13 +66,14 @@ class ModelMetaClass(type):
         # 挂到实例上
         # attrs['mapping'] = mapping
         cls_obj = type.__new__(cls, name, bases, attrs)
-        # 挂到类对象上
+
+        # 这里为了测试效果简单的将需要的信息添加到类的动态属性上
         cls_obj.mapping = mapping
         cls_obj.table = name
 
         return cls_obj
 
-
+# 如果子类中指定metaclass那么必须从父类的meta继承以维持正确的调用顺序
 class NewsMetaClass(ModelMetaClass):
     """docstring for NewsMetaClass"""
     print('1. NewsMetaClass __new__')
@@ -88,6 +87,7 @@ class NewsMetaClass(ModelMetaClass):
         return clsobj
 ```
 
+###Model类, 注意`metaclass`的设定
 
 ```python        
 class Model(object, metaclass=ModelMetaClass):
@@ -133,3 +133,4 @@ News.create(title='test', content='asdf', read_count='0', publish_date=datetime.
 
 ```
 
+参考：[使用元类](http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014319106919344c4ef8b1e04c48778bb45796e0335839000)
